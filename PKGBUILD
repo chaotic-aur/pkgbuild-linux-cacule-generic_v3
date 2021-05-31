@@ -64,7 +64,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
-        "config"
+        "https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/linux-cacule/config"
         "${_patchsource}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
