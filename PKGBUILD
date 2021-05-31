@@ -54,7 +54,7 @@ pkgver=${_major}
 #_stable=${_major}.${_minor}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_major}
-pkgrel=1
+pkgrel=3
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -64,7 +64,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
-        "https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/linux-cacule/config"
+        "config"
         "${_patchsource}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
@@ -73,12 +73,12 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
         "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
         "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
-        "${_patchsource}/bfq-patches-v8/0001-bfq-patches.patch"
+        "${_patchsource}/bfq-patches-v9/0001-bfq-patches.patch"
         "${_patchsource}/block-patches-v3/0001-block-patches.patch"
         "${_patchsource}/ll-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
         "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-        "${_patchsource}/btrfs-patches-v8/0001-btrfs-patches.patch"
+        "${_patchsource}/btrfs-patches-v9/0001-btrfs-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
         "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
@@ -88,7 +88,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
 sha512sums=('8a5f1774bee223445ad147d2f83a7b3a2c19ea620d0f3964344bb33d003fec17d36279b522745c03467e361ebd61479a4f7122e5911bb6b817ff52ee55c736d9'
-            'bdcada2ac7ae2263320622bf512520e188db1cfbbd08d0ece527cf30e10463331e7e709a33db913a80ff476c64d60e3e5dffed4a7756f56b4f516f95bdfd03bd'
+            'd8d006db59115f4e5311cadec4f325dc282f71dc2a0aded551c6e2782e76d5211ec22032138cb2b86592cb029d317ba0c385d3273d184453d558de5eb4528850'
             '1908055c446f04ef0a0a5a19579836d2f5dc60d7989677f85f084a7186a6327b240291feed8d25e320e72efa114b243a325362e2dbfbf7f4f3fb89bbdd3819be'
             '97e661d3fbd75a6e9edeb79a694f42c49174f317bd35ae25dd13d71797d29fca630e88e1440415faca05fb46935591965fae0dcc4365c80e3cefa3d8b615c3b8'
             '60bda2070739a52af4f81816ebda8f3520a8d75ea5e00f65a903a3416ae31edba56fe151f6a9e02dc90ec3be7854e9a62e10e72120d7148fd3838806d8b9e986'
@@ -97,12 +97,12 @@ sha512sums=('8a5f1774bee223445ad147d2f83a7b3a2c19ea620d0f3964344bb33d003fec17d36
             '905f97cdff3e096552159a229d069d1b1418f4142b2927134110f504bfe0883309b3f29c2aeeb94c528b63e0eec7d0d69b44c3d498211c610811969cc4d07a56'
             '1c6cdf40009ce6c62b0a35cc7c2a74818b7169d32e18fb3c2bb8761762c15c579f64cb36f9076c4f78d3f88f077f6246ee75ba93f370cc40dae450d6d71117bb'
             'd9e072c64cd413e1ba58a9924872b7a5bfed33c7b78d062a6be42f1becce450647c90066d95b8a7f1facc1cdc538d532b3d5915cd6c4f659b76ad950993af8f3'
-            'c46fd4237b5c93acf853b2e59bf9cf6d36212fc1d494da06c9c956395fbbfb3765186dd72e9ce2b065cdca92483656bc8a418dd4ba7980516cf4d0cb89ab93ff'
+            'b32a8e9ab49e897d2af505ef4fea0921285d53a0b05bf42fe0d5eb905d6181d883c29862273c43b28399982a13638e14df2bf297f8044e95388a68126bd3107c'
             'b6997128403100c0f08cf898b215409efe137183c66a0faf2b8f5c82c185ac7224ef0f694f6920956d963ad002b6b7bdb33438d269f96a90097e0b1e12093e76'
             '47f265716ebd268e4296aaba1efe5098df00736b69ec7d0413cace6dbb5cb162c1c952f7527a2a41b246ed76e6e112514c5349e8dc52f4609def30257e18d7aa'
             '5081a6a3a3db160ef0a23acd0c0db403cc4b3eb2dfd280b1b7ba2ae907d362e4d6a653d546523c870af07009c62f58eec26e7b8174a3f4fcbaa32808d965ad73'
             '28446f518e88ab934330111a01019cb164bfdd21094c69e96cc16c7931440d069ef997ae141154c97c80fcb727e8c4d940b8bf63554e3f4179652523e285c5b4'
-            '31a3f3c13aa54d17ba2b600f197f24b1f058695001d876cac2bd378c0bdf2755f3af3c0ecd609ed535faecd013867abfac7d9f320f87b63de8eb44108940af16'
+            '9d0b86f0f36af9f00a463b9b4423241228e5d28164dadff75f2a6ab15688c6e1867bdd98217781104f0e933b1254cc409f9c38accde1000674f4a87ef02901cd'
             '1b3b48246fe70e8ca7390cacacf560696c1d98604a7716ac32df8f3d7fc7cc2ab733ab24e372fffa63016344f2e4ed078f7d597c3c1261f0ca3ff1c87a13dcb9'
             '076a48767614ec97a84ccefa5795e4f36973f64a7728a9f716d5d9ecb6f6907ffcc74f7fab845e9d9aef3ef5d3d4df4e03f6c5a755c7fdd4bc43751003902e71'
             'd428d3f54634b91e41cac279f7c7b708a174d9cac085b7497802c5a50f77bbfcfdd8799c1db3351ba18e8316685b729d292bb45de0da443762dbd1b87cbc7dad'
@@ -145,9 +145,9 @@ prepare() {
         echo "Prepared $pkgbase version $(<version)"
 
   ### CPU_ARCH SCRIPT ##
-#    source "${startdir}"/configure
+    source "${startdir}"/configure
 
-#    cpu_arch
+    cpu_arch
 
     ### Optionally set tickrate to 2000HZ
       if [ -n "$_2k_HZ_ticks" ]; then
@@ -220,6 +220,7 @@ prepare() {
   		    scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
   	    fi
 
+
     ### Enable protect file mappings under memory pressure
         if [ -n "$_mm_protect" ]; then
         	echo "Enabling protect file mappings under memory pressure..."
@@ -242,7 +243,6 @@ prepare() {
         echo "Enabling standard ZSTD compression ratio..."
     		scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
     		scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
-
   ### Enabling ZSTD COMPRESSION ##
   #      echo "Set module compression to ZSTD"
   #      scripts/config --enable CONFIG_MODULE_COMPRESS
@@ -280,7 +280,6 @@ prepare() {
       scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
       scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
       scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-  ### Enable ANBOX
       echo "Enable Anbox"
       scripts/config --module  CONFIG_ASHMEM
       scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
@@ -298,9 +297,7 @@ prepare() {
       echo "Enable CONFIG_VHBA"
       scripts/config --module CONFIG_VHBA
       scripts/config --disable CONFIG_BPF_PRELOAD
-      echo "Enable GENv3"
-      scripts/config --disable CONFIG_GENERIC_CPU
-      scripts/config --enable CONFIG_GENERIC_CPU3
+      scripts/config --disable CONFIG_GCC_PLUGINS
 
       ### Optionally load needed modules for the make localmodconfig
        # See https://aur.archlinux.org/packages/modprobed-db
@@ -332,7 +329,6 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-
 
   cd $_srcname
   local kernver="$(<version)"
