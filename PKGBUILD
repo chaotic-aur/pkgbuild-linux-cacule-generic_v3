@@ -44,7 +44,7 @@ _localmodcfg=
 
 ### Do not edit below this line unless you know what you're doing
 
-pkgbase=linux-cacule
+pkgbase=linux-cacule-generic_v3
 # pkgname=('linux-cacule' linux-cacule-headers)
 _major=5.12.9
 #_minor=1
@@ -400,7 +400,7 @@ _package() {
      optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-cacule)
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
 
   cd $_srcname
@@ -424,7 +424,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-cacule' 'pahole')
+    depends=('pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
