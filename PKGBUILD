@@ -64,7 +64,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
-        "config"
+        "https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/linux-cacule/config"
         "${_patchsource}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_patchsource}/cacule-patches/cacule-5.12.patch"
         "${_patchsource}/cpu-patches-v3/0001-cpu-patches.patch"
@@ -89,7 +89,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/$_srcname.tar.xz"
         "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch" )
 
 sha512sums=('f97b025db8a469ff982d445356dac78765a4a5625fa442e0242598c807df49753eedd99517e3ca6d1713714f12b802d58e752b3b71259eb2540b86422a72e937'
-            'd2be2d406356dd629d8913be622eab80a25838565fdc008551cca86d127c71c824ef3023e6adb36268bfb0d5dc2b7f02cb745de04402a81811a80dd4083b59eb'
+            'SKIP'
             '1908055c446f04ef0a0a5a19579836d2f5dc60d7989677f85f084a7186a6327b240291feed8d25e320e72efa114b243a325362e2dbfbf7f4f3fb89bbdd3819be'
             '367f5ec3ec03d41c4ae5c60ca70d2aa2a1fb200245f1fd7a3409c123c0b93e36338c944864cf473b3fa236cc97d715e86de4184362837af54ff8a6ade33e7d99'
             'cf3caf1ad42ee52f4472c71b6e88be5810fb27d8bf5e64a0db3851d5312aea84b704099bd02c90f910e1d4c96a8df788bc9cb18167d7c2324e8d6b48726d405f'
@@ -146,10 +146,13 @@ prepare() {
         make -s kernelrelease > version
         echo "Prepared $pkgbase version $(<version)"
 
-  ### CPU_ARCH SCRIPT ##
-    source "${startdir}"/configure
+#  ### CPU_ARCH SCRIPT ##
+#    source "${startdir}"/configure
 
-    cpu_arch
+#    cpu_arch
+
+    scripts/config --disable CONFIG_GENERIC_CPU
+    scripts/config --enable CONFIG_GENERIC_CPU3
 
     ### Optionally set tickrate to 2000HZ
       if [ -n "$_2k_HZ_ticks" ]; then
