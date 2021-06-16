@@ -52,7 +52,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.12
-_minor=10
+_minor=11
 _srcname=linux-${_major}
 pkgbase=linux-cacule-generic_v3
 pkgver=${_major}.${_minor}
@@ -70,11 +70,11 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/linux-cacule/config"
-  "${_patchsource}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+  "${_patchsource}/arch-patches-v7/0001-arch-patches.patch"
   "${_caculepatches}/v5.12/cacule-5.12.patch"
-  "${_patchsource}/cpu-patches-v4/0001-cpu-patches.patch"
+  "${_patchsource}/cpu-patches-v5/0001-cpu-patches.patch"
   "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/futex2-stable-patches-v5/0001-futex2-resync-from-gitlab.collabora.com.patch"
+  "${_patchsource}/futex2-stable-patches-v6/0001-futex2-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
   "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
   "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
@@ -86,7 +86,7 @@ source=(
 #  "${_patchsource}/fixes-miscellaneous/lrng/lrng-40.patch"
 #  "${_patchsource}/fixes-miscellaneous/lrng/1004-lrng-update-20210607.patch"
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-  "${_patchsource}/btrfs-patches-v12/0001-btrfs-patches.patch"
+  "${_patchsource}/btrfs-patches-v13/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
   "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
 #  "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
@@ -130,10 +130,11 @@ prepare() {
         echo "Setting config..."
       cp "${srcdir}"/config .config
       make olddefconfig
-      
-     scripts/config --disable CONFIG_GENERIC_CPU
+    scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_GENERIC_CPU3
- 
+
+
+      cpu_arch
       ### Optionally set tickrate to 2000HZ
         if [ -n "$_2k_HZ_ticks" ]; then
           echo "Setting tick rate to 2k..."
@@ -518,13 +519,13 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
-            '034eb39ad49f3a26fc1b4ef799ef481ce35fe03e2b24131e9cd3d2805a99ad19'
+            '2f9bfb09efb00633ccf425b72c573329d62b6d140403682d1aa87db06de88f62'
             'SKIP'
-            'b2139a29b0cabfb029e51c81f386c698ef209e43cbd93a3515892785662e4c74'
+            'dd89db0483301a62cef23ba797fee1fb9804f570f952df87fe418ee22e353227'
             'a90ec03375bf97c06bf2ca3f1fd0224deee8408077f71447326b2796b53652a1'
-            '157c03f5bd1c550c827e703cef1b11b39dcb1cacde4fc9ae869340a6dc0edcb1'
+            '41e44b0fc80cf2e60e23addccdcf23e0aea66a9d9f9d4d1bfe9440dfec6be1ea'
             '4ff5c33785445f103d479196bb33c4f991d6c5f56df5c643ec6d2451368f0605'
-            '800bfe1208beeec4265fdfa11b279f9fe99508e3b3ef6a921b17dd61075d9ad7'
+            'db4707a6430a80447fabc2517e554cf9e055a4039b362f683bd9dd7f04d7a667'
             'f7c68f43599c53ce19a14e6f296e5e0820257e80acb9f52a1dec036d0d9a62ab'
             '9eabd1468635477d9c143e9f59d86cf0dd32583bf6bd926080a6707f86d363ed'
             '5587a2d535dcd7ff09080c27f32a02dc67a0d35145b0b49ae10e8520c906a153'
@@ -534,7 +535,7 @@ sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'f7a36231b794022d49e53f464d25e48f2eebf6266c2cbe5756c63aa3bf03bae7'
             '2b261d4845899cfec315c81cfbfd3ba653a0465145e7dad9ac2f6595366ea3c8'
             '59dc35df675221c9e54326e4a2ca57074c955387e1d4cb0b6543424bc84bdb11'
-            '01bb5fc3c0085c5f3eed9cb039f4b61ff30acd289efbebc48dc6458c12c9ac42'
+            'f71cc3bdd9b3488ece3d7433ff65e0dd9f544f069b82e84e32ad67e2e7f64718'
             '42dc3c76534393d1b59ca3f321797566a7637bbb110f604eb9bf584b867a97a4'
             '0b44848f5b8926a9e9db8064aeefbfb53c289923e25779c11ddb2a5b149fdb12'
             '4ad652d36fdd3f5142e66407a964e8e0d3c91ab3e7094a368de1ef1b21f6d19a'
